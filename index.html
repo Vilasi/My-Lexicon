@@ -12,9 +12,10 @@
   </head>
   <body>
     <main class="container">
-      <form action="#" id="searchbar">
+      <form id="searchbar">
         <div class="input-group">
           <input
+            id="searchbar-input"
             type="text"
             class="form-control"
             placeholder="Enter a word"
@@ -22,14 +23,14 @@
             aria-describedby="button-addon2"
           />
           <button
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary searchbar-button"
             type="button"
             id="button-addon2"
           >
             Add
           </button>
           <button
-            class="btn btn-outline-secondary"
+            class="btn btn-outline-secondary searchbar-button"
             type="button"
             id="button-addon2"
           >
@@ -40,5 +41,6 @@
     </main>
 
     <script src="./bootstrap-5.2.0/bootstrap.bundle.js"></script>
+    <script src="./main.js" async defer></script>
   </body>
 </html>
