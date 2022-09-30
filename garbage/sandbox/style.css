@@ -1,0 +1,16 @@
+body {
+  background-color: #ce3635;
+  text-align: center;
+  color: #fff;
+  padding-top: 10em;
+  font-family: 'EB Garamond', serif !important;
+}
+
+* {
+  color: #fff;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
