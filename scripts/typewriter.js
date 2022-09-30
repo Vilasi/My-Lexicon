@@ -21,7 +21,7 @@ class TxtType {
     this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
     let that = this;
-    console.log(that);
+    // console.log(that);
     let delta = 200 - Math.random() * 250;
 
     if (this.isDeleting) {
@@ -45,10 +45,25 @@ class TxtType {
 
 window.onload = function () {
   const elements = document.getElementsByClassName('typewrite');
+  try {
+    console.log(
+      `"elements[0].getAttribute('data-type'); : "${elements[0].getAttribute(
+        'data-type'
+      )}`
+    );
+    console.log(
+      `"elements[0].getAttribute('data-period'); :"${elements[0].getAttribute(
+        'data-period'
+      )}`
+    );
+  } catch (error) {
+    console.warn('Error caught');
+  }
   for (let i = 0; i < elements.length; i++) {
     let toRotate = elements[i].getAttribute('data-type');
     let period = elements[i].getAttribute('data-period');
-    console.log(toRotate);
+    // console.log(toRotate);
+    // console.log(JSON.parse(toRotate));
     if (toRotate) {
       new TxtType(elements[i], JSON.parse(toRotate), period);
     }

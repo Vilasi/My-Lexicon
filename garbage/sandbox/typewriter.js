@@ -82,3 +82,17 @@ window.onload = function () {
 // Object.assign(Person.prototype, personPrototype);
 // or
 // Person.prototype.greet = personPrototype.greet;
+
+// {
+//     "toRotate": [
+//         "Welcome to My Lexicon!",
+//         "Improve Your Vocabulary.",
+//         "Learn Through Practice.",
+//         "Develop Lifelong Skills."
+//     ],
+//     "el": {},
+//     "loopNum": 4,
+//     "period": 2000,
+//     "txt": "Welcome to My ",
+//     "isDeleting": true
+// }
