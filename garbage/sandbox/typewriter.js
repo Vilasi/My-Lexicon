@@ -1,6 +1,6 @@
 class TxtType {
-  constructor(el, toRotate, period) {
-    this.toRotate = toRotate;
+  constructor(el, scrollingText, period) {
+    this.scrollingText = scrollingText;
     this.el = el;
     this.loopNum = 0;
     this.period = parseInt(period, 10) || 2000;
@@ -9,8 +9,8 @@ class TxtType {
     this.isDeleting = false;
   }
   tick() {
-    let i = this.loopNum % this.toRotate.length;
-    let fullTxt = this.toRotate[i];
+    let i = this.loopNum % this.scrollingText.length;
+    let fullTxt = this.scrollingText[i];
 
     if (this.isDeleting) {
       this.txt = fullTxt.substring(0, this.txt.length - 1);
@@ -46,11 +46,11 @@ class TxtType {
 window.onload = function () {
   const elements = document.getElementsByClassName('typewrite');
   for (let i = 0; i < elements.length; i++) {
-    let toRotate = elements[i].getAttribute('data-type');
+    let scrollingText = elements[i].getAttribute('data-type');
     let period = elements[i].getAttribute('data-period');
-    console.log(toRotate);
-    if (toRotate) {
-      new TxtType(elements[i], JSON.parse(toRotate), period);
+    console.log(scrollingText);
+    if (scrollingText) {
+      new TxtType(elements[i], JSON.parse(scrollingText), period);
     }
   }
   // INJECT CSS
@@ -96,3 +96,34 @@ window.onload = function () {
 //     "txt": "Welcome to My ",
 //     "isDeleting": true
 // }
+
+//Regular function that generates a sound file given a configuration record and two callback functions
+
+//////// PROMISES
+//A Promise is an object that represents the eventual completion or failure of an asynchronous operation
+//A promise is a returned object to which you attach callbacks instead of passing callbacks into a function
+
+/**
+ *
+ *
+ */
+// function successCallback(result) {
+//   console.log(`Audio file ready at URL: ${result}`);
+// }
+
+// function failureCallback(error) {
+//   console.error(`Error generating audio file: ${error}`);
+// }
+
+// createAudioFileAsync(audioSettings, successCallback, failureCallback);
+
+// //Here is that function rewritten to be async
+// createAudioFileAsync(audioSettings).then(successCallback, failureCallback);
+/**
+ *
+ *
+ */
+
+//Callbacks added with then() will never be invoked before the completion of the current run of the JS event loop
+//Callbacks will be invoked even if they were added after the success or failure of the asynchronous operation that the promise represents
+//multiple callbacks may be added by calling .then() several times. They will be invoked one after another in the order they were inserted. They can be chained
