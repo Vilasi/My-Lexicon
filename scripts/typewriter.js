@@ -25,7 +25,7 @@ class TxtType {
 
     let that = this;
     // console.log(that);
-    console.log(this);
+    // console.log(this);
     let delta = 200 - Math.random() * 250;
 
     if (this.isDeleting) {
