@@ -7,13 +7,13 @@ class TxtType {
     this.loopNum = 0;
     this.period = parseInt(period, 10) || 2000;
     this.txt = '';
-    // Calls .tick() upon new TxtType instantiation
+    //Calls .tick() upon new TxtType instantiation
     this.tick();
     this.isDeleting = false;
     this.counter = 0;
   }
   tick() {
-    // [0] is initial value
+    //[0] is initial value
     //This cycles from 0, scrollingText.length - 1. The value of loopNum increases forever, but scrollingText.length always stays the same
     let i = this.loopNum % this.scrollingText.length;
     // console.log(i);
@@ -52,11 +52,6 @@ class TxtType {
       this.loopNum++;
       delta = 500;
     }
-    // console.log(this.loopNum);
-
-    //shows to console how many times this.tick() has been called
-    // this.counter += 1;
-    // console.log(this.counter);
 
     //this.tick() is going to keep getting called recursively forever
     setTimeout(() => {
@@ -98,26 +93,3 @@ window.onload = function () {
   css.innerHTML = '.typewrite > .wrap { border-right: 0.08em solid #fff}';
   document.body.appendChild(css);
 };
-
-// const kitty = {
-//   name: 'Charlie',
-//   meow() {
-//     console.log('meow');
-//   },
-// };
-
-// const personPrototype = {
-//   greet() {
-//     console.log(`hello, my name is ${this.name}!`);
-//   },
-// };
-
-// class Person {
-//   constructor(name) {
-//     this.name = name;
-//   }
-// }
-
-// Object.assign(Person.prototype, personPrototype);
-// or
-// Person.prototype.greet = personPrototype.greet;

@@ -1,3 +1,9 @@
+/**
+ *
+ * Original uncommented code for comparison with ../../scripts/typewriter.js
+ *
+ */
+
 class TxtType {
   constructor(el, scrollingText, period) {
     this.scrollingText = scrollingText;
