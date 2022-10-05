@@ -20,8 +20,6 @@ class TxtType {
 
     this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
-    let that = this;
-
     let delta = 200 - Math.random() * 250;
 
     if (this.isDeleting) {
@@ -37,8 +35,8 @@ class TxtType {
       delta = 500;
     }
 
-    setTimeout(function () {
-      that.tick();
+    setTimeout(() => {
+      this.tick();
     }, delta);
   }
 }

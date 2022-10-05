@@ -10,40 +10,57 @@ class TxtType {
     // Calls .tick() upon new TxtType instantiation
     this.tick();
     this.isDeleting = false;
+    this.counter = 0;
   }
   tick() {
+    // [0] is initial value
+    //This cycles from 0, scrollingText.length - 1. The value of loopNum increases forever, but scrollingText.length always stays the same
     let i = this.loopNum % this.scrollingText.length;
+    // console.log(i);
+    //on first invocation, fullTxt = TxtType.scrollingText[0]
     let fullTxt = this.scrollingText[i];
 
     if (this.isDeleting) {
+      //on each tick() call, this.txt = fullTxt with one letter cut off the end, until it equals 0
       this.txt = fullTxt.substring(0, this.txt.length - 1);
     } else {
+      //on first invocation, this.txt = ''
+      //txt.length = 0 to start, so fullTxt.substring(0, 1)
       this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
 
+    //Set element.innerHTML to the below
     this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
-    // console.log(that);
-    // console.log(this);
-    // `this` is assigned to 'that' so that setTimeout has access to it.
-    let that = this;
-    let delta = 200 - Math.random() * 250;
+    //Randomizes the time between keystroke - more natural potentially. Think about re-adding
+    // let delta = 200 - Math.random() * 250;
+    let delta = 75;
 
+    //Function happens twice as fast per tick then deleting
     if (this.isDeleting) {
       delta /= 2;
     }
 
+    //period between starting/deleting new scrollingText
+    //when this.text === fullTxt set the setTimeout function ms to 2000ms (period variable, as grabbed from the html attribute)
     if (!this.isDeleting && this.txt === fullTxt) {
       delta = this.period;
       this.isDeleting = true;
     } else if (this.isDeleting && this.txt === '') {
+      //The pause between full deleting and starting the next word = 500ms
       this.isDeleting = false;
       this.loopNum++;
       delta = 500;
     }
+    // console.log(this.loopNum);
 
-    setTimeout(function () {
-      that.tick();
+    //shows to console how many times this.tick() has been called
+    // this.counter += 1;
+    // console.log(this.counter);
+
+    //this.tick() is going to keep getting called recursively forever
+    setTimeout(() => {
+      this.tick();
     }, delta);
   }
 }
