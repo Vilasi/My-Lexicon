@@ -1,3 +1,5 @@
+//Saving comments for future tinkering of this script.
+
 class TxtType {
   // The below is our single call
   // TxtType(<p class='typewrite'...</p>, JSON.parse('Array of things to say'), 2000)

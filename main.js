@@ -8,7 +8,7 @@ const getWordDef = async (word) => {
   const response = await fetch(base + query);
   const data = await response.json();
 
-  // console.log(data);
+  console.log(data);
   return data;
 };
 
@@ -23,6 +23,7 @@ searchButtons.forEach((btn) => {
         new Audio(data[0].phonetics[0].audio).play();
 
         // console.log(data.message);
+        // console.log(data);
       })
       .catch((err) => {
         console.log(err);
