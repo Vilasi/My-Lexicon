@@ -66,16 +66,16 @@ window.onload = function () {
   //domElements = p.typewrite
   const domElements = document.getElementsByClassName('typewrite');
   try {
-    console.log(
-      `"domElements[0].getAttribute('data-type'); : "${domElements[0].getAttribute(
-        'data-type'
-      )}`
-    );
-    console.log(
-      `"domElements[0].getAttribute('data-period'); :"${domElements[0].getAttribute(
-        'data-period'
-      )}`
-    );
+    // console.log(
+    //   `"domElements[0].getAttribute('data-type'); : "${domElements[0].getAttribute(
+    //     'data-type'
+    //   )}`
+    // );
+    // console.log(
+    `"domElements[0].getAttribute('data-period'); :"${domElements[0].getAttribute(
+      'data-period'
+    )}`;
+    // );
   } catch (error) {
     console.warn('Error caught');
   }
