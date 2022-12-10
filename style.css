@@ -1,34 +1,46 @@
-body,
-html {
-  font-family: 'EB Garamond', serif !important;
-
-  width: 100%;
-  height: 100%;
-
-  display: -webkit-box;
-
-  display: -ms-flexbox;
-
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  /**
-  *
-  *
-  */
-  /* background: #333; */
-  /* padding-top: 5em; */
+:root {
+  --font-family-header: 'EB Garamond', serif !important;
 }
 
-main {
+body,
+html {
+  font-family: var(--font-family-header);
+
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  width: 100%;
+  height: 100vh;
+
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+}
+
+.word-html-body {
+  display: flex;
+  align-items: flex-start;
+}
+
+.index {
+  height: auto;
+  width: 37%;
+}
+
+.word {
+  position: relative;
+  top: 5rem;
+}
+
+.definition {
+  max-width: 60ch;
+}
+
+.see-through-nav {
+  background-color: rgba(255, 255, 255, 0) !important;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* DEMO-SPECIFIC STYLES */
