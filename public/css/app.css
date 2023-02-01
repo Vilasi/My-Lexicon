@@ -1,0 +1,16 @@
+:root {
+  --font-family-quatro: 'Quattrocento Sans', sans-serif;
+  --font-family-quicksand: 'Quicksand', sans-serif;
+}
+
+.ff-quicksand {
+  font-family: var(--font-family-quicksand);
+}
+
+.ff-quatro {
+  font-family: var(--font-family-quatro);
+}
+
+.mouseover {
+  cursor: pointer;
+}
