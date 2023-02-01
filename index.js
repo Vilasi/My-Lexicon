@@ -26,7 +26,26 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 app.use(express.json());
 app.use(methodOverride('_method'));
 
-// DATA
+// API
+// const dictionaryAPIURLBase = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
+// const getWordDef = (word) => {
+//   const data = axios
+//     .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+//     .then((res) => {
+//       return res;
+//     })
+//     .catch((err) => {
+//       return err;
+//     });
+//   return data;
+// };
+
+const getWordDef = async (word) => {
+  const data = await axios.get(
+    `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+  );
+  return data;
+};
 // const word = [];
 
 // INDEX ROUTE
@@ -38,8 +57,13 @@ app.get('/', (req, res) => {
   res.render('index', { word: wordObject });
 });
 
-app.get('/words', (req, res) => {
-  res.send('I am the response');
+app.get('/words', async (req, res) => {
+  // console.log(req.query);
+  const { word } = req.query;
+  const definition = await getWordDef(word);
+  console.log(definition.data[0].word);
+
+  res.render('words', { definition: definition });
 });
 
 app.listen(port, () => {
