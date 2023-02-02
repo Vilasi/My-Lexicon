@@ -6,27 +6,39 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="">
     </head>
     <body>
         
-        <h1>The word you searched was:</h1>
-        <p><%= dictionaryAPICall.word[0].word %></p>
-        <% for (let word of dictionaryAPICall.word) {%> 
-            <p>Word: <%= word.word %>  
-                <% for (let partOfSpeech of word.meanings) {%> 
-                    <p>Part of speech: <%= partOfSpeech.partOfSpeech %>  </p>
-                    <% for (let definition of partOfSpeech.definitions) {%> 
-                        <ul>
-                            <li> Definition: <%= definition.definition %>  </li>
-                        </ul>
+        <main class="container">
+            <div class="d-flex align-items-center ">
+                <h1 class="display-4">The word is:</h1>
+                <h2 class="text-right text-uppercase ps-5 mb-0"><%= dictionaryAPICall.word[0].word %></h2>
 
+            </div>
+            <form action="http://localhost:3000/words" method="post">
+                <button class="btn btn-primary" type="submit">Practice Word</button>
+            </form>
+            <% for (let word of dictionaryAPICall.word) {%> 
+                <p>Word: <%= word.word %></p>
+                    <% for (let partOfSpeech of word.meanings) {%> 
+                        <p>Part of speech: <%= partOfSpeech.partOfSpeech %>  </p>
+                        <% for (let definition of partOfSpeech.definitions) {%> 
+                            <ul>
+                                <li> Definition: <%= definition.definition %>  
+                                    <% if (definition.example) {%> 
+                                        <ul>
+                                            <li>Example: <%= definition.example %></li>
+                                        </ul>
+                                    <% } %> 
+                                </li>
+                            </ul>
+    
+                        <% } %> 
                     <% } %> 
-
-                <% } %> 
-            </p>
-
-        <% } %> 
-       
+            <% } %> 
+        </main>
+       <script src="/js/bootstrap/bootstrap.min.js" defer></script>
     </body>
 </html>

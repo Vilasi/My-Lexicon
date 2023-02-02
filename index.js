@@ -74,27 +74,6 @@ app.get('/words', async (req, res) => {
   } else {
     res.render('error', { dictionaryAPICall });
   }
-  // console.log(
-  //   dictionaryAPICall.apiSuccess,
-  //   dictionaryAPICall.statusCode,
-  //   dictionaryAPICall.statusText,
-  //   dictionaryAPICall.data
-  // );
-
-  // console.log(definition.data.title);
-  // if (definition.data.title) {
-  //   res.render('error', { definition });
-  // } else {
-  //   res.render('words', { definition: definition });
-  // }
-
-  // try {
-  // } catch (error) {
-  //   console.log(error);
-  // }
-  // console.log(definition.data[0].word);
-
-  // res.send('Match sent');
 });
 
 app.listen(port, () => {
