@@ -26,29 +26,15 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 app.use(express.json());
 app.use(methodOverride('_method'));
 
-// API
-// const dictionaryAPIURLBase = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
-// const getWordDef = (word) => {
-//   const data = axios
-//     .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-//     .then((res) => {
-//       return res;
-//     })
-//     .catch((err) => {
-//       return err;
-//     });
-//   return data;
-// };
-
+// API CALLS
 const getWordDef = async (word) => {
   const data = await axios.get(
     `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
   );
   return data;
 };
-// const word = [];
 
-// INDEX ROUTE
+// INDEX ROUTE - The Resource
 app.get('/', (req, res) => {
   //   res.send('Welcome to My Lexicon!');
   const wordObject = word;
@@ -57,11 +43,13 @@ app.get('/', (req, res) => {
   res.render('index', { word: wordObject });
 });
 
+//SEARCH INDIVIDUAL WORD ROUTE
 app.get('/words', async (req, res) => {
   // console.log(req.query);
   const { word } = req.query;
+  console.log(req.query);
   const definition = await getWordDef(word);
-  console.log(definition.data[0].word);
+  // console.log(definition.data[0].word);
 
   res.render('words', { definition: definition });
 });
