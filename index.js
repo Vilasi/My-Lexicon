@@ -28,32 +28,78 @@ app.use(methodOverride('_method'));
 
 // API CALLS
 const getWordDef = async (word) => {
-  const data = await axios.get(
-    `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
-  );
-  return data;
+  try {
+    const data = await axios.get(
+      `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+    );
+    const response = {
+      apiSuccess: true,
+      statusCode: data.status,
+      statusText: data.statusText,
+      word: data.data,
+    };
+
+    return response;
+  } catch (error) {
+    const response = {
+      apiSuccess: false,
+      statusCode: error.response.status,
+      statusText: error.statusText,
+      errorData: error.response.data,
+    };
+
+    return response;
+  }
 };
 
 // INDEX ROUTE - The Resource
 app.get('/', (req, res) => {
-  //   res.send('Welcome to My Lexicon!');
   const wordObject = word;
-  //   console.log(word);
-
   res.render('index', { word: wordObject });
 });
 
 //SEARCH INDIVIDUAL WORD ROUTE
 app.get('/words', async (req, res) => {
-  // console.log(req.query);
-  const { word } = req.query;
-  console.log(req.query);
-  const definition = await getWordDef(word);
+  let { word } = req.query;
+
+  //Regex trims any word beyond the first word entered.
+  word = word.match(/(\w+)/)[0];
+
+  // Call API
+  const dictionaryAPICall = await getWordDef(word);
+
+  if (dictionaryAPICall.apiSuccess) {
+    console.log(dictionaryAPICall.word);
+    res.render('words', { dictionaryAPICall });
+  } else {
+    res.render('error', { dictionaryAPICall });
+  }
+  // console.log(
+  //   dictionaryAPICall.apiSuccess,
+  //   dictionaryAPICall.statusCode,
+  //   dictionaryAPICall.statusText,
+  //   dictionaryAPICall.data
+  // );
+
+  // console.log(definition.data.title);
+  // if (definition.data.title) {
+  //   res.render('error', { definition });
+  // } else {
+  //   res.render('words', { definition: definition });
+  // }
+
+  // try {
+  // } catch (error) {
+  //   console.log(error);
+  // }
   // console.log(definition.data[0].word);
 
-  res.render('words', { definition: definition });
+  // res.send('Match sent');
 });
 
 app.listen(port, () => {
   console.log(`Server listening on port: ${port}`);
 });
+
+//regular expression to match first word up until first whitespace
+// const word = word.match(/(\w+)/)[0];

@@ -11,7 +11,22 @@
     <body>
         
         <h1>The word you searched was:</h1>
-        <p><%= definition.data[0].word %></p>
+        <p><%= dictionaryAPICall.word[0].word %></p>
+        <% for (let word of dictionaryAPICall.word) {%> 
+            <p>Word: <%= word.word %>  
+                <% for (let partOfSpeech of word.meanings) {%> 
+                    <p>Part of speech: <%= partOfSpeech.partOfSpeech %>  </p>
+                    <% for (let definition of partOfSpeech.definitions) {%> 
+                        <ul>
+                            <li> Definition: <%= definition.definition %>  </li>
+                        </ul>
+
+                    <% } %> 
+
+                <% } %> 
+            </p>
+
+        <% } %> 
        
     </body>
 </html>
