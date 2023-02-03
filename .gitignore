@@ -1,0 +1,5 @@
+#ignore /.vscode settings
+/.vscode
+
+#Ignore old-storage
+/old-storage

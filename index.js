@@ -33,10 +33,12 @@ const getWordDef = async (word) => {
       `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
     );
     const response = {
+      word: data.data[0].word,
       apiSuccess: true,
       statusCode: data.status,
       statusText: data.statusText,
       data: data.data,
+      id: idmon(),
     };
 
     return response;
@@ -61,7 +63,7 @@ app.get('/', (req, res) => {
 });
 
 //SEARCH INDIVIDUAL WORD ROUTE
-app.get('/words', async (req, res) => {
+app.get('/words/definition', async (req, res) => {
   let { word } = req.query;
 
   //Regex trims any word beyond the first word entered.
@@ -71,6 +73,7 @@ app.get('/words', async (req, res) => {
   const dictionaryAPICall = await getWordDef(word);
   words.push(dictionaryAPICall);
   console.log(words);
+  console.log(__dirname);
 
   if (dictionaryAPICall.apiSuccess) {
     // console.log(dictionaryAPICall.word);
