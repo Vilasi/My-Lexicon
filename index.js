@@ -36,7 +36,7 @@ const getWordDef = async (word) => {
       apiSuccess: true,
       statusCode: data.status,
       statusText: data.statusText,
-      word: data.data,
+      data: data.data,
     };
 
     return response;
@@ -51,6 +51,8 @@ const getWordDef = async (word) => {
     return response;
   }
 };
+
+const words = [];
 
 // INDEX ROUTE - The Resource
 app.get('/', (req, res) => {
@@ -67,10 +69,12 @@ app.get('/words', async (req, res) => {
 
   // Call API
   const dictionaryAPICall = await getWordDef(word);
+  words.push(dictionaryAPICall);
+  console.log(words);
 
   if (dictionaryAPICall.apiSuccess) {
-    console.log(dictionaryAPICall.word);
-    res.render('words', { dictionaryAPICall });
+    // console.log(dictionaryAPICall.word);
+    res.render('words', { dictionaryAPICall, word });
   } else {
     res.render('error', { dictionaryAPICall });
   }
@@ -79,6 +83,3 @@ app.get('/words', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server listening on port: ${port}`);
 });
-
-//regular expression to match first word up until first whitespace
-// const word = word.match(/(\w+)/)[0];

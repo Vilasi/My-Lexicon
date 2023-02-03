@@ -14,13 +14,13 @@
         <main class="container">
             <div class="d-flex align-items-center ">
                 <h1 class="display-4">The word is:</h1>
-                <h2 class="text-right text-uppercase ps-5 mb-0"><%= dictionaryAPICall.word[0].word %></h2>
+                <h2 class="text-right text-uppercase ps-5 mb-0"><%= word %></h2>
 
             </div>
             <form action="http://localhost:3000/words" method="post">
                 <button class="btn btn-primary" type="submit">Practice Word</button>
             </form>
-            <% for (let word of dictionaryAPICall.word) {%> 
+            <% for (let word of dictionaryAPICall.data) {%> 
                 <p>Word: <%= word.word %></p>
                     <% for (let partOfSpeech of word.meanings) {%> 
                         <p>Part of speech: <%= partOfSpeech.partOfSpeech %>  </p>
