@@ -11,6 +11,10 @@ for (let button of addWordButtons) {
     console.log(e.target.id);
     if (input.value === '') {
       input.placeholder = 'Please enter a word';
+      // e.target.preventDefault();
+      // form.preventDefault();
+
+      console.log(form, input);
     } else if (e.target.id === 'add') {
       // window.location.href = `http://localhost:3000/words?word=${input.value}`;
       // form.method = 'post';
@@ -22,3 +26,12 @@ for (let button of addWordButtons) {
     }
   });
 }
+
+const viewWordsButton = document.querySelector('#view-words-button');
+console.log(viewWordsButton);
+viewWordsButton.addEventListener('click', (e) => {
+  console.log(e);
+  // e.stopPropagation();
+  form.method = 'post';
+  window.location.href = 'http://localhost:3000/words';
+});

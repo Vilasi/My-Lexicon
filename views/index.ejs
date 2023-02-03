@@ -1,6 +1,17 @@
 <%- include('partials/head.ejs') %> 
-  <body class="d-flex justify-content-center align-items-center vh-100">
-    <main class="index container">
+  <body class="">
+    <nav class="navbar bg-body-tertiary fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand">Navbar</a>
+        <form action="http://localhost:3000/words" method="post" class="d-flex" role="search">
+          <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+          <button class="btn btn-outline-success" type="submit">My Words</button>
+         </form>
+      </div>
+    </nav>
+    
+
+    <main class="index container vh-100 d-flex flex-column justify-content-center align-items-center">
       <h1 class="display-1">
         <p
           class="typewrite"
@@ -11,7 +22,7 @@
         </p>
       </h1>
 
-      <form id="searchbar" method="get" action="http://localhost:3000/words/definition">
+      <form class="w-75" id="searchbar" method="get" action="http://localhost:3000/words/definition">
         <div class="input-group">
           <input
             id="word"
@@ -32,6 +43,12 @@
           </button>
         </div>
       </form>
+      <!-- <form action="" method="post">
+      </form> -->
+
+      <!-- <form action="" method="post">
+
+      </form> -->
      
     </main>
     <!-- Typewrite Effect Script -->
