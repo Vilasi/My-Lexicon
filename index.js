@@ -71,20 +71,21 @@ app.get('/words/definition', async (req, res) => {
 
   // Call API
   const dictionaryAPICall = await getWordDef(word);
-  words.push(dictionaryAPICall);
-  console.log(words);
-  console.log(__dirname);
+  mockDataBase.push(dictionaryAPICall);
+  // console.log(words);
+  // console.log(__dirname);
 
   if (dictionaryAPICall.apiSuccess) {
     // console.log(dictionaryAPICall.word);
-    res.render('words', { dictionaryAPICall, word });
+    console.log(mockDataBase);
+    res.render('search', { dictionaryAPICall, word });
   } else {
     res.render('error', { dictionaryAPICall });
   }
 });
 
-app.post('/words', (req, res) => {
-  res.send('Post route!');
+app.get('/words', (req, res) => {
+  res.send('Get route!');
 });
 
 app.listen(port, () => {
