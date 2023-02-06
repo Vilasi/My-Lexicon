@@ -85,7 +85,9 @@ app.get('/words/definition', async (req, res) => {
 });
 
 app.get('/words', (req, res) => {
-  res.send('Get route!');
+  // res.send('Get route!');
+
+  res.render('my-words');
 });
 
 app.listen(port, () => {
