@@ -1,9 +1,16 @@
 <%- include('partials/head.ejs') %> 
-<body>
+<body class="pt-5 mt-5">
     <%- include('partials/nav') %> 
+
+
+    <main class="container">
+
+        <% for (let item of database) {%> 
+            <h1><%= item.word %></h1>
     
-
-
+    
+        <% } %> 
+    </main>
 
 
 

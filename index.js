@@ -86,8 +86,9 @@ app.get('/words/definition', async (req, res) => {
 
 app.get('/words', (req, res) => {
   // res.send('Get route!');
+  console.log(mockDataBase);
 
-  res.render('my-words');
+  res.render('my-words', { database: mockDataBase });
 });
 
 app.listen(port, () => {
